@@ -11,7 +11,7 @@ public class Test {
         myLinkedList.print();
 
         System.out.println("size exit " + myLinkedList.size());
-        System.out.println("Get element by index 0 - " + myLinkedList.get(0).element);
+        System.out.println("Get element by index 0 - " + myLinkedList.get(0));
         System.out.println("Remove element by index 2 - " + myLinkedList.remove(2));
 
         myLinkedList.print();

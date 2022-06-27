@@ -38,8 +38,11 @@ public class MyLinkedList<T> {
             head = head.next;
             head.previous = null;
         } else {
-            Node<T> element = get(index - 1);
-            removeElement = element.next;
+            Node<T> element = head;
+            for (int i = 0; i < index-1; i++) {
+                element = element.next;
+            }
+             removeElement = element.next;
             if (index == size - 1) {
                 tail = element;
                 tail.next = null;
@@ -64,12 +67,12 @@ public class MyLinkedList<T> {
         return size;
     }
 
-    public Node<T> get(int index) {
+    public T get(int index) {
         Node<T> element = head;
         for (int i = 0; i < index; i++) {
             element = element.next;
         }
-        return element;
+        return element.element;
     }
 
     public void print() {

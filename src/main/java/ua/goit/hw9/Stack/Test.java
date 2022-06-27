@@ -2,7 +2,7 @@ package main.java.ua.goit.hw9.Stack;
 
 public class Test {
     public static void main(String[] args) {
-        MyStack<String> myStack = new MyStack<>(5);
+        MyStack<String> myStack = new MyStack<>();
         System.out.println("size input " + myStack.size());
         for (int i = 0; i < 3; i++) {
             myStack.push("Index" + i);

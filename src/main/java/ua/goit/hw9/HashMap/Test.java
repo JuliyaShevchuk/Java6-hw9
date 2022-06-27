@@ -2,7 +2,7 @@ package main.java.ua.goit.hw9.HashMap;
 
 public class Test {
     public static void main(String[] args) {
-        MyHashMap myHashMap=new MyHashMap();
+        MyHashMap<Integer,String> myHashMap=new MyHashMap<>();
         myHashMap.print();
         System.out.println("Size - "+myHashMap.size());
         System.out.println("Add elements");
@@ -26,10 +26,6 @@ public class Test {
         myHashMap.clear();
         System.out.println("Size - "+myHashMap.size());
         myHashMap.print();
-
-
-
-
 
     }
 }

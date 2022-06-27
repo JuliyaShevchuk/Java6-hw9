@@ -4,11 +4,20 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class MyStack<T> {
+    private static final int DEFAULT_CAPACITY = 5;
     private int size;
     private Object[] array;
     private int top;
 
+
+    public MyStack() {
+        this(DEFAULT_CAPACITY);
+    }
+
     public MyStack(int s) {
+        if (s <= 0) {
+            throw new IllegalArgumentException();
+        }
         this.size = s;
         array = new Object[size];
         top = -1;
@@ -35,8 +44,10 @@ public class MyStack<T> {
             System.out.println("Stack is empty!");
             return null;
         } else {
+            T element = (T) array[top];
             array[top] = null;
-            return (T) array[top--];
+            top--;
+            return element;
         }
     }
 

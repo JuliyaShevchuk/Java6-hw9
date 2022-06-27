@@ -2,8 +2,7 @@ package main.java.ua.goit.hw9.HashMap;
 
 import main.java.ua.goit.hw9.LinkedList.MyLinkedList;
 
-public class MyHashMap {
-
+public class MyHashMap<K, V> {
     Node[] table;
     int size;
 
@@ -11,27 +10,27 @@ public class MyHashMap {
         table = new Node[16];
     }
 
-    public class Node {
+    public class Node<K, V> {
         int hash;
-        Object key;
-        Object value;
-        Node next;
+        K key;
+        V value;
+        Node<K, V> next;
     }
 
     public static int myHash(int v, int length) {
         return v % (length - 1);
     }
 
-    public void put(Object key, Object value) {
-        Node newNode = new Node();
+    public void put(K key, V value) {
+        Node<K,V> newNode = new Node<>();
         newNode.hash = myHash(key.hashCode(), table.length);
         newNode.value = value;
         newNode.key = key;
         newNode.next = null;
 
-        Node temp = table[newNode.hash];
+        Node<K,V> temp = table[newNode.hash];
 
-        Node iterLast = null;
+        Node<K,V> iterLast = null;
         boolean keyRepeat = false;
         if (temp == null) {
             table[newNode.hash] = newNode;
@@ -55,16 +54,15 @@ public class MyHashMap {
         }
     }
 
-    public Object get(Object key) {
-        // Получить соответствующий массив в соответствии со значением хэш-кода и сравнить его, чтобы найти соответствующее значение ключа
+    public V get(K key) {
         int hash = myHash(key.hashCode(), table.length);
-        Object value = null;
+        V value = null;
         if (table[hash] == null) {
             return null;
         } else {
-            Node temp = table[hash];
+            Node<K,V> temp = table[hash];
             while (temp != null) {
-                if (temp.key.equals(key)) {// Если они равны, пара ключ-значение найдена и соответствующий узел возвращается
+                if (temp.key.equals(key)) {
                     value = temp.value;
                     break;
                 } else {
@@ -75,14 +73,14 @@ public class MyHashMap {
         return value;
     }
 
-    public Object remove(Object key) {
-        Node removeNode = null;
+    public V remove(K key) {
+        Node<K,V> removeNode = null;
         int hash = myHash(key.hashCode(), table.length);
         if (table[hash] == null) {
-            return removeNode;
+            return null;
         } else {
-            Node temp = table[hash];
-            Node previousNode = null;
+            Node<K,V> temp = table[hash];
+            Node<K,V> previousNode = null;
             while (temp != null) {
                 if (temp.key.equals(key)) {
                     removeNode = temp;
